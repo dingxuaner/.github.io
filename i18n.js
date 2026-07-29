@@ -1,0 +1,47 @@
+// i18n — 中英双语字典
+const i18n = {
+  zh: {
+    brand: "TingXuan 的空间",
+    nav_projects: "项目",
+    nav_blog: "博客",
+    nav_about: "关于",
+    nav_contact: "联系",
+    hero_overline: "欢迎来到我的空间",
+    hero_title: "你好，我是 TingXuan<br>做机器人，也做 AI 落地。",
+    hero_desc: "学生 / 机器人项目开发者。这里收录我做过的项目、实验、博客，以及一些把 AI 变成实际系统的尝试。",
+    hero_cta1: "查看项目",
+    hero_cta2: "读博客",
+    sec_projects: "项目 / Projects",
+    sec_blog: "博客 / Blog",
+    sec_about: "关于 / About",
+    sec_contact: "联系 / Contact",
+    about_text: "我是一名学生，专注机器人系统与 AI 应用落地。喜欢把模型从论文里拽出来，跑在真实的硬件与流程上。这个站点由 AI 辅助生成、托管在 GitHub Pages。",
+    footer_text: "© 2026 TingXuan. Built with AI · Hosted on GitHub Pages.",
+    no_projects: "暂无项目，编辑 projects.js 添加。",
+    no_blog: "暂无文章，编辑 blogs.js 添加。",
+    view_project: "查看项目 →",
+    read_more: "阅读全文 →"
+  },
+  en: {
+    brand: "TingXuan's Space",
+    nav_projects: "Projects",
+    nav_blog: "Blog",
+    nav_about: "About",
+    nav_contact: "Contact",
+    hero_overline: "Welcome to my space",
+    hero_title: "Hi, I'm TingXuan<br>Building robots & shipping AI.",
+    hero_desc: "Student / Robotics developer. My projects, experiments, blog posts, and attempts to turn AI into real-world systems live here.",
+    hero_cta1: "View Projects",
+    hero_cta2: "Read Blog",
+    sec_projects: "Projects",
+    sec_blog: "Blog",
+    sec_about: "About",
+    sec_contact: "Contact",
+    about_text: "I'm a student focused on robotics systems and real-world AI applications. I love pulling models from papers and running them on actual hardware and pipelines. This site is built with AI assistance and hosted on GitHub Pages.",
+    footer_text: "© 2026 TingXuan. Built with AI · Hosted on GitHub Pages.",
+    no_projects: "No projects yet. Edit projects.js to add some.",
+    no_blog: "No posts yet. Edit blogs.js to add some.",
+    view_project: "View Project →",
+    read_more: "Read More →"
+  }
+};

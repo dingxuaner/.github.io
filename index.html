@@ -1,71 +1,95 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-lang="zh">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Name · 作品集</title>
-<meta name="description" content="学生 / 机器人项目开发者作品集，由 AI 生成，托管于 GitHub Pages。">
+<title>TingXuan 的空间 · TingXuan's Space</title>
+<meta name="description" content="TingXuan 的个人空间 — 机器人 / AI 项目作品集 & 博客。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<!-- nav -->
 <nav class="nav">
   <div class="container nav-inner">
-    <div class="brand">Your Name</div>
+    <div class="brand" data-i18n="brand">TingXuan 的空间</div>
     <div class="nav-links">
-      <a href="#projects">项目</a>
-      <a href="#about">关于</a>
-      <a href="#contact">联系</a>
-      <button id="theme-toggle" class="theme-toggle" aria-label="切换深浅色">深色</button>
+      <a href="#projects" data-i18n="nav_projects">项目</a>
+      <a href="#blog" data-i18n="nav_blog">博客</a>
+      <a href="#about" data-i18n="nav_about">关于</a>
+      <a href="#contact" data-i18n="nav_contact">联系</a>
+      <button id="lang-toggle" class="icon-btn" aria-label="Switch Language" title="EN / 中文">EN</button>
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="深色 / 浅色">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
     </div>
   </div>
 </nav>
 
+<!-- hero -->
 <header class="hero">
   <div class="container">
-    <h1>你好，我是 Your Name<br>做机器人，也做 AI 落地。</h1>
-    <p>学生 / 机器人项目开发者。这里收录我做过的项目、实验，以及一些把 AI 变成实际系统的尝试。</p>
+    <p class="hero-overline" data-i18n="hero_overline">欢迎来到我的空间</p>
+    <h1 data-i18n="hero_title">你好，我是 TingXuan<br>做机器人，也做 AI 落地。</h1>
+    <p class="hero-desc" data-i18n="hero_desc">学生 / 机器人项目开发者。这里收录我做过的项目、实验、博客，以及一些把 AI 变成实际系统的尝试。</p>
     <div class="cta">
-      <a class="btn btn-primary" href="#projects">查看项目</a>
-      <a class="btn btn-ghost" href="#contact">联系我</a>
+      <a class="btn btn-primary" href="#projects" data-i18n="hero_cta1">查看项目</a>
+      <a class="btn btn-ghost" href="#blog" data-i18n="hero_cta2">读博客</a>
     </div>
   </div>
 </header>
 
+<!-- projects -->
 <section id="projects">
   <div class="container">
-    <div class="section-title">项目 / Projects</div>
+    <div class="section-title" data-i18n="sec_projects">项目 / Projects</div>
     <div id="project-grid" class="grid"></div>
-    <p id="project-empty" class="empty-hint" hidden>暂无项目，编辑 <code>projects.js</code> 添加。</p>
+    <p id="project-empty" class="empty-hint" hidden data-i18n="no_projects">暂无项目，编辑 projects.js 添加。</p>
   </div>
 </section>
 
+<!-- blog -->
+<section id="blog" class="blog-section">
+  <div class="container">
+    <div class="section-title" data-i18n="sec_blog">博客 / Blog</div>
+    <div id="blog-grid" class="grid blog-grid"></div>
+    <p id="blog-empty" class="empty-hint" hidden data-i18n="no_blog">暂无文章，编辑 blogs.js 添加。</p>
+  </div>
+</section>
+
+<!-- about -->
 <section id="about" class="about">
   <div class="container">
-    <div class="section-title">关于 / About</div>
-    <p class="about-text">我是一名学生，专注机器人系统与点对点的 AI 应用。喜欢把模型从论文里拽出来，跑在真实的硬件与流程上。这个站点由 AI 生成、托管在 GitHub Pages，项目内容维护在 <code>projects.js</code> 中。</p>
+    <div class="section-title" data-i18n="sec_about">关于 / About</div>
+    <p class="about-text" data-i18n="about_text">我是一名学生，专注机器人系统与 AI 应用落地。喜欢把模型从论文里拽出来，跑在真实的硬件与流程上。这个站点由 AI 辅助生成、托管在 GitHub Pages。</p>
   </div>
 </section>
 
+<!-- contact -->
 <section id="contact" class="contact">
   <div class="container">
-    <div class="section-title">联系 / Contact</div>
+    <div class="section-title" data-i18n="sec_contact">联系 / Contact</div>
     <div class="contact-links">
-      <a href="https://github.com/yourname" target="_blank" rel="noopener">GitHub</a>
-      <a href="mailto:you@example.com">Email</a>
+      <a href="https://github.com/dingxuaner" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:dingxuaner@example.com">Email</a>
     </div>
   </div>
 </section>
 
+<!-- footer -->
 <footer class="footer">
   <div class="container">
-    <span>© 2026 Your Name. Built with AI · Hosted on GitHub Pages.</span>
+    <span data-i18n="footer_text">© 2026 TingXuan. Built with AI · Hosted on GitHub Pages.</span>
   </div>
 </footer>
 
+<script src="i18n.js"></script>
 <script src="projects.js"></script>
+<script src="blogs.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
