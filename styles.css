@@ -44,10 +44,10 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background
 
 /* icon buttons */
 .icon-btn{
-  background:none;border:1px solid var(--border);border-radius:999px;
-  padding:6px 12px;color:var(--text);cursor:pointer;font-size:13px;
-  transition:background .2s,border-color .2s;display:inline-flex;align-items:center;gap:5px;
-  font-family:inherit;line-height:1;
+  background:var(--bg-card);border:1px solid var(--border);border-radius:999px;
+  padding:7px 14px;color:var(--text);cursor:pointer;font-size:13px;font-weight:500;
+  transition:background .2s,border-color .2s;display:inline-flex;align-items:center;gap:6px;
+  font-family:inherit;line-height:1;white-space:nowrap;
 }
 .icon-btn:hover{background:var(--bg-subtle);border-color:var(--text-muted);}
 .icon-btn svg{flex-shrink:0;}

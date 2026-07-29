@@ -1,41 +1,8 @@
-// ====== i18n 双语切换 ======
-(function () {
-  const root = document.documentElement;
-  const btn = document.getElementById('lang-toggle');
-  const dict = (typeof i18n !== 'undefined') ? i18n : { zh: {}, en: {} };
-
-  function applyLang(lang) {
-    root.setAttribute('data-lang', lang);
-    document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
-    if (btn) btn.textContent = lang === 'zh' ? 'EN' : '中文';
-    const t = dict[lang] || {};
-    document.querySelectorAll('[data-i18n]').forEach((el) => {
-      const key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) {
-        // 支持包含 <br> 的富文本
-        if (t[key].includes('<')) el.innerHTML = t[key];
-        else el.textContent = t[key];
-      }
-    });
-    // 重新渲染项目卡片的链接文字
-    renderProjects();
-    renderBlogs();
-  }
-
-  const saved = localStorage.getItem('lang') || 'zh';
-  applyLang(saved);
-
-  if (btn) {
-    btn.addEventListener('click', () => {
-      const next = root.getAttribute('data-lang') === 'zh' ? 'en' : 'zh';
-      applyLang(next);
-      localStorage.setItem('lang', next);
-    });
-  }
-
-  // 暴露给其他模块调用
-  window.getCurrentLang = () => root.getAttribute('data-lang') || 'zh';
-})();
+// 全局语言读取（供渲染函数使用，须优先定义）
+function getCurrentLang() {
+  return document.documentElement.getAttribute('data-lang') || 'zh';
+}
+window.getCurrentLang = getCurrentLang;
 
 // ====== 渲染项目卡片 ======
 function renderProjects() {
@@ -43,8 +10,9 @@ function renderProjects() {
   const empty = document.getElementById('project-empty');
   if (!grid) return;
 
-  const lang = window.getCurrentLang ? window.getCurrentLang() : 'zh';
-  const viewText = (typeof i18n !== 'undefined' && i18n[lang]) ? (i18n[lang].view_project || '查看项目 →') : '查看项目 →';
+  const lang = getCurrentLang();
+  const dict = (typeof i18n !== 'undefined') ? i18n : { zh: {}, en: {} };
+  const viewText = (dict[lang] && dict[lang].view_project) || '查看项目 →';
 
   grid.innerHTML = '';
   if (typeof projects === 'undefined' || !Array.isArray(projects) || projects.length === 0) {
@@ -80,8 +48,9 @@ function renderBlogs() {
   const empty = document.getElementById('blog-empty');
   if (!grid) return;
 
-  const lang = window.getCurrentLang ? window.getCurrentLang() : 'zh';
-  const readText = (typeof i18n !== 'undefined' && i18n[lang]) ? (i18n[lang].read_more || '阅读全文 →') : '阅读全文 →';
+  const lang = getCurrentLang();
+  const dict = (typeof i18n !== 'undefined') ? i18n : { zh: {}, en: {} };
+  const readText = (dict[lang] && dict[lang].read_more) || '阅读全文 →';
 
   grid.innerHTML = '';
   if (typeof blogs === 'undefined' || !Array.isArray(blogs) || blogs.length === 0) {
@@ -117,7 +86,41 @@ function renderBlogs() {
   });
 }
 
-// ====== 初始渲染 ======
+// ====== 应用语言 ======
+function applyLang(lang) {
+  const root = document.documentElement;
+  root.setAttribute('data-lang', lang);
+  root.lang = lang === 'en' ? 'en' : 'zh-CN';
+  const dict = (typeof i18n !== 'undefined') ? (i18n[lang] || {}) : {};
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) {
+      // 支持包含 <br> 的富文本
+      if (String(dict[key]).includes('<')) el.innerHTML = dict[key];
+      else el.textContent = dict[key];
+    }
+  });
+  renderProjects();
+  renderBlogs();
+}
+
+// ====== 语言切换 ======
+(function () {
+  const btn = document.getElementById('lang-toggle');
+  const saved = localStorage.getItem('lang') || 'zh';
+  applyLang(saved);
+  if (btn) {
+    btn.textContent = saved === 'zh' ? 'EN' : '中文';
+    btn.addEventListener('click', () => {
+      const next = getCurrentLang() === 'zh' ? 'en' : 'zh';
+      applyLang(next);
+      btn.textContent = next === 'zh' ? 'EN' : '中文';
+      localStorage.setItem('lang', next);
+    });
+  }
+})();
+
+// ====== 初始渲染（填充卡片） ======
 renderProjects();
 renderBlogs();
 
